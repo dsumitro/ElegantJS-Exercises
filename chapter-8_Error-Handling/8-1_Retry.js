@@ -15,15 +15,14 @@ function primitiveMultiply(a, b) {
 }
 
 function reliableMultiply(a, b) {
-  try {
-    return primitiveMultiply(a, b);
-  } catch (err) {
-    if (err instanceof MultiplicatorUnitFailure) {
-      console.log('Failure');
-      // Can cause a stack overflow if failure occurs too much
-      return reliableMultiply(a, b);
+  for (;;) {
+    try {
+      return primitiveMultiply(a, b);
+    } catch (err) {
+      if (err instanceof MultiplicatorUnitFailure) {
+        console.log('Multiplication Unit Failure');
+      } else throw err;
     }
-    throw err;
   }
 }
 

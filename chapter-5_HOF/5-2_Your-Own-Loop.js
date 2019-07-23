@@ -10,13 +10,12 @@ When defining the function, you can use a regular loop to do the actual looping.
 
 // Your code here.
 const loop = (value, test, update, body) => {
-  console.log('hello');
-  if (!test(value)) return;
+  if (!test(value)) {
+    return 0;
+  }
   body(value);
-  const newValue = update(value);
-  loop(newValue, test, update, body);
+  loop(update(value), test, update, body);
 };
-
 loop(3, n => n > 0, n => n - 1, console.log);
 // → 3
 // → 2

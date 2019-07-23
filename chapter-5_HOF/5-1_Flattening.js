@@ -6,9 +6,8 @@ into a single array that has all the elements of the original arrays.
 const arrays = [[1, 2, 3], [4, 5], [6]];
 
 // Solution
-console.log(arrays.reduce((accum, curr) => accum.concat(curr)));
-
-// Alternative
-console.log(arrays.flat());
+console.log(
+  arrays.reduce((combinedArray, addedArray) => combinedArray.concat(addedArray))
+);
 
 // → [1, 2, 3, 4, 5, 6]
